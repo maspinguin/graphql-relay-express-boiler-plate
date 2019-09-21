@@ -7,6 +7,8 @@ import {
     GraphQLString
 } from 'graphql';
 
+import { senjas, senja } from './SenjaType';
+
 let viewerType = new GraphQLObjectType({
     name: 'Viewer',
     fields: {
@@ -17,18 +19,8 @@ let viewerType = new GraphQLObjectType({
                 return _.id;
             },
         },
-        string: {
-            type: GraphQLString,
-        },
-        accountId: {
-            type: GraphQLString,
-        },
-        email: {
-            type: GraphQLString,
-            resolve: _ => {
-                return _.email;
-            }
-        }
+        senja, // sorry it's my girlfriend name :D
+        senjas
     }
 });
 
