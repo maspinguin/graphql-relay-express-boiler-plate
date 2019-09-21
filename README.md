@@ -16,6 +16,7 @@ for update the graphql schema.
 then ``npm run start:local``
 
 App will run with `:8080` port of your localhost..
+Playground: localhost:8080/graphql
 
 
 PS:
