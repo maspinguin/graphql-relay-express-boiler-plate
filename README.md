@@ -1,5 +1,7 @@
 ## **Description** ##
-Simple boiler plate to use graphQL with apollo server
+Simple boiler plate to use graphQL with apollo server express for RelayJS.
+
+This server make to run simply things of GraphQL operation, for frontend side: https://github.com/maspinguin/react-relay-boiler-plate
 
 Tool that use:
  - Express for server
