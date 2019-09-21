@@ -39,7 +39,7 @@ const addDataSenjaMutation = mutationWithClientMutationId({
 addNodeDefinition(
     {
         Senja: id => {
-            return findById(id)
+            return findById(findById, id)
         },
     },
     {

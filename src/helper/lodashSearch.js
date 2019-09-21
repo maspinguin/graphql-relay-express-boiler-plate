@@ -4,7 +4,7 @@ var fs = require('fs');
 const findById = (originalData, id) => {
     return _.find(originalData, function (obj) {
         obj.plainId = id;
-        return obj.id === id
+        return obj.plainId === id
     })
 };
 

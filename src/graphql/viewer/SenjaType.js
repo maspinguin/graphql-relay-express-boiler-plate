@@ -39,7 +39,7 @@ let senjaType = new GraphQLObjectType({
 
 addNodeDefinition({
     Senja: id => {
-        return findById(id)
+        return findById(originalData, id)
     }
 }, {
     Senja: senjaType
