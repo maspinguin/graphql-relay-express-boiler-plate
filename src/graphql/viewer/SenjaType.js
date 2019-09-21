@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import {
     globalIdField,
     connectionDefinitions,
@@ -17,6 +15,10 @@ import {
     addNodeDefinition
 } from './GraphQLNodeDef';
 
+import {
+    findById,
+    search
+} from "../../helper/lodashSearch";
 
 // imagine that is the data from DB.. (bcs this repo not implement DB) u can use sequilize for db implementation for example
 let originalData  = [
@@ -91,8 +93,7 @@ let senjas = {
 
         if(args.search) {
             //imagine this will implement search from db
-            result = search(args.search);
-
+            result = search(originalData, args.search);
         }
 
         let data = {
@@ -114,7 +115,7 @@ let senja = {
         }
     },
     resolve: async (_, { id }, context) => {
-        const data = findById(id);
+        const data = findById(originalData, id);
         console.log('data', data);
         if(data) {
             return data;
@@ -132,22 +133,6 @@ const toConnection = (pageResult, connectionArgs) => {
     console.log('toConnection', pageResult, meta, connectionArgs);
     let {content} = pageResult;
     return connectionFromArraySlice(content, connectionArgs, meta);
-};
-
-
-const findById = (id) => {
-    return _.find(originalData, function (obj) {
-        obj.plainId = id;
-        return obj.id === id
-    })
-};
-
-const search = (params) => {
-    const data =  _.filter(originalData, function (obj) {
-        obj.plainId = obj.id;
-        return _.includes([params.toLowerCase()], obj.name.toLowerCase() );
-    });
-    return data;
 };
 
 
