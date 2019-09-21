@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-class-properties", { "loose": false }],
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-function-bind",
+    "@babel/plugin-transform-flow-strip-types"
+  ]
+}

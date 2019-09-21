@@ -1,0 +1,43 @@
+{
+  "name": "graphql-apollo-boiler-plate",
+  "version": "1.0.0",
+  "description": "basic graphql server with apollo",
+  "main": "index.js",
+  "scripts": {
+    "start:local": "nodemon --exec babel-node ./src/server-dev.js",
+    "update-schema": "babel-node ./script/updateSchema.js"
+  },
+  "keywords": [
+    "graphql",
+    "apollo"
+  ],
+  "author": "Bangkit Ilham Maulana (bangkit@wallextech.com)",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.6.7",
+    "body-parser": "^1.19.0",
+    "config": "^3.1.0",
+    "connect-redis": "3.4.0",
+    "cors": "^2.8.5",
+    "express": "4.16.4",
+    "express-session": "1.15.6",
+    "graphql": "^14.4.2",
+    "graphql-relay": "^0.6.0",
+    "graphql-type-json": "^0.3.0",
+    "vhost": "3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.3.3",
+    "@babel/node": "7.2.0",
+    "@babel/plugin-proposal-class-properties": "7.2.1",
+    "@babel/plugin-proposal-export-default-from": "7.2.0",
+    "@babel/plugin-proposal-function-bind": "7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "7.2.3",
+    "@babel/preset-env": "7.3.1",
+    "del": "3.0.0",
+    "gulp": "4.0.2",
+    "gulp-babel": "8.0.0",
+    "http-status-codes": "1.3.0",
+    "nodemon": "1.18.10"
+  }
+}
