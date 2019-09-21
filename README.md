@@ -1,4 +1,4 @@
-#**Description**
+#**Description**#
 Simple boiler plate to use graphQL with apollo server
 
 Tool that use:
