@@ -1,4 +1,5 @@
 import _ from 'lodash';
+var fs = require('fs');
 
 const findById = (originalData, id) => {
     return _.find(originalData, function (obj) {
@@ -20,9 +21,25 @@ const mapData = (originalData) => {
         obj.plainId = obj.id;
         return obj;
     })
-}
+};
+
+const addData = (originalData, payload = {}) => {
+    const data = _.orderBy(originalData, ['id'], ['asc']);
+
+    let id = data[data.length -1].id;
+    id++;
+    const newData = {
+        id: id,
+        plainId: id,
+        ...payload
+    };
+
+    originalData.push(newData);
+    return newData;
+};
 
 export  {
+    addData,
     mapData,
     findById,
     search
