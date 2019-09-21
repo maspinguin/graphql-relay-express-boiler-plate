@@ -86,7 +86,8 @@ let senja = {
         }
     },
     resolve: async (_, { id }, context) => {
-        const data = findById(originalData, id);
+        const _data = mapData(originalData);
+        const data = findById(_data, id);
         console.log('data', data);
         if(data) {
             return data;
