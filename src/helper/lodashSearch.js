@@ -15,7 +15,15 @@ const search = (originalData,params) => {
     return data;
 };
 
+const mapData = (originalData) => {
+    return _.map(originalData, function (obj) {
+        obj.plainId = obj.id;
+        return obj;
+    })
+}
+
 export  {
+    mapData,
     findById,
     search
 }

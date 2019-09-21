@@ -15,6 +15,7 @@ import {
 } from './GraphQLNodeDef';
 
 import {
+    mapData,
     findById,
     search
 } from "../../helper/lodashSearch";
@@ -59,7 +60,7 @@ let senjas = {
     },
     resolve: async(_, args, context) => {
         // imagine it was all data
-        let result  = originalData;
+        let result  = mapData(originalData);
 
         if(args.search) {
             //imagine this will implement search from db
