@@ -63,3 +63,11 @@ mutation addDataSenjaMutation($input:addDataSenjaMutationInput!){
   }
 }
 ```
+query variable:
+```
+{
+  "input": {
+    "name":"Bangkitsess"
+  }
+}
+```
