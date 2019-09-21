@@ -10,7 +10,6 @@ import {
 } from 'graphql';
 
 import {
-    defaultTypeFields,
     defaultConnectionArgs,
     addNodeDefinition
 } from './GraphQLNodeDef';
@@ -20,35 +19,9 @@ import {
     search
 } from "../../helper/lodashSearch";
 
+import originalData from '../../mock/senja';
+
 // imagine that is the data from DB.. (bcs this repo not implement DB) u can use sequilize for db implementation for example
-let originalData  = [
-    {
-        id: '1',
-        name: 'novela'
-    },
-    {
-        id: '2',
-        name: 'senja'
-    },
-    {
-        id: '3',
-        name: 'lestari'
-    },
-    {
-        id: '4',
-        name: 'Bangkit'
-    },
-    {
-        id: '5',
-        name: 'ilham'
-    },
-    {
-        id: '6',
-        name: 'maulana'
-    }
-];
-
-
 
 let senjaType = new GraphQLObjectType({
     name: 'Senja',
@@ -65,10 +38,7 @@ let senjaType = new GraphQLObjectType({
 
 addNodeDefinition({
     Senja: id => {
-        return {
-            id: '123',
-            name: 'Novela Senja'
-        }
+        return findById(id)
     }
 }, {
     Senja: senjaType
