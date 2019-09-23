@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "userId": "e2b1a566-45a8-4fd0-8d21-ed8d5add6a08",
+    "name": "Adhis Yudha",
+    "email": "adhis.yudha@gmail.com"
+  },
+  {
+    "id": "2",
+    "userId": "a142cff9-4504-44f2-bd6c-4d3db63653d9",
+    "name": "Bangkit Ilham",
+    "email": "bangkit.ilhamz@gmail.com"
+  },
+  {
+    "id": "3",
+    "userId": "38aa8ba0-1d84-4bef-8c74-cc4bd3c5c1df",
+    "name": "Heru Joko",
+    "email": "herujoko@gmail.com"
+  }
+]

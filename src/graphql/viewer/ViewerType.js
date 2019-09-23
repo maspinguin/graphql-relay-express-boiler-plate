@@ -8,6 +8,7 @@ import {
 } from 'graphql';
 
 import { senjas, senja } from './SenjaType';
+import { clients, client } from './ClientType';
 
 let viewerType = new GraphQLObjectType({
     name: 'Viewer',
@@ -19,8 +20,10 @@ let viewerType = new GraphQLObjectType({
                 return _.id;
             },
         },
-        senja, // sorry it's my girlfriend name :D
-        senjas
+        senja,
+        senjas,
+        client,
+        clients
     }
 });
 
