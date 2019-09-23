@@ -74,7 +74,7 @@ edit config by your auth key inside `/config/default.json`
 ```
 
 ### Available Mutation ###
-* Client Mutation *
+** Client Mutation **
 ```
 mutation addDataClientMutation($input:addDataClientMutationInput!){
   addDataClientMutation(input:$input) {
@@ -97,7 +97,7 @@ query Variable:
 }
 ```
 
-* Senja Mutation *
+** Senja Mutation **
 ```
 mutation addDataSenjaMutation($input:addDataSenjaMutationInput!){
   addDataSenjaMutation(input:$input) {
