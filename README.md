@@ -30,31 +30,74 @@ edit config by your auth key inside `/config/default.json`
 
 ### Available Query ###
 ```{
-     viewer{
-       id
-       senja(id:"1") {
-         id
-         name
-       }
-       senjas(first:2, after:"", search:"") {
-         pageInfo{
-           hasNextPage
-           startCursor
-           endCursor
-         }
-         edges {
-           node {
-             id
-             name
-             plainId
-           }
-         }
-       }
-     }
-   }
+  viewer{
+    id
+    senja(id:"1") {
+      id
+      name
+    }
+    senjas(first:2, after:"", search:"") {
+      pageInfo{
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+          plainId
+        }
+      }
+    }
+    
+    client(id:"1") {
+      id
+      name
+    }
+    clients(first:2, after:"", search:"") {
+      pageInfo{
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+          plainId
+        }
+      }
+    }
+  }
+}
 ```
 
 ### Available Mutation ###
+** Client Mutation **
+```
+mutation addDataClientMutation($input:addDataClientMutationInput!){
+  addDataClientMutation(input:$input) {
+    viewer{
+      id,
+     name,
+      email,
+     plainId
+    }
+  }
+}
+```
+query Variable:
+```
+{
+  "input": {
+    "name":"fas",
+    "email": "bangkit@adfsf1.com"
+  }
+}
+```
+
+** Senja Mutation **
 ```
 mutation addDataSenjaMutation($input:addDataSenjaMutationInput!){
   addDataSenjaMutation(input:$input) {
