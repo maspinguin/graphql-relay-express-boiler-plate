@@ -2,7 +2,7 @@ import _ from 'lodash';
 var fs = require('fs');
 
 const findById = (originalData, id) => {
-    console.log('datass',originalData);
+    //console.log('datass',originalData);
     return _.find(originalData, function (obj) {
         obj.plainId = Number(id);
         return Number(obj.id) === Number(id)
@@ -28,7 +28,7 @@ const addData = (originalData, payload = {}) => {
     const data = _.orderBy(originalData, ['id'], ['asc']);
 
     let id = data[data.length -1].id;
-    console.log('id', id);
+    //console.log('id', id);
     id++;
     const newData = {
         id: id,

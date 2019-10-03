@@ -15,6 +15,7 @@ import {
 import originalData from '../../mock/client';
 import {addData, findById} from '../../helper/lodashSearch';
 import {addNodeDefinition} from "../viewer/GraphQLNodeDef";
+import {pubsub} from "../schemaSubscription";
 
 const addDataClientMutation = mutationWithClientMutationId({
     name: 'addDataClientMutation',
@@ -33,6 +34,7 @@ const addDataClientMutation = mutationWithClientMutationId({
     },
     mutateAndGetPayload: args => {
         const data = addData(originalData, { ...args });
+        pubsub.publish('clientAdded');
         return {
             viewer: data
         }
