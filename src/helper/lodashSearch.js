@@ -9,6 +9,26 @@ const findById = (originalData, id) => {
     })
 };
 
+const updateData = (originalData, payload = {}) => {
+    let find = false;
+    _.each(originalData, function (item) {
+        if(Number(item.plainId) == Number(payload.plainId)) {
+            find = true;
+        }
+    });
+    if(find){
+        _.each(originalData, function (item, index) {
+            if(item.plainId === payload.plainId) {
+                originalData[index].name = payload.name;
+                originalData[index].email = payload.email;
+            }
+        });
+        return payload;
+    }
+
+    return null;
+};
+
 const search = (originalData,params) => {
     const data =  _.filter(originalData, function (obj) {
         obj.plainId = obj.id;
@@ -42,6 +62,7 @@ const addData = (originalData, payload = {}) => {
 
 export  {
     addData,
+    updateData,
     mapData,
     findById,
     search

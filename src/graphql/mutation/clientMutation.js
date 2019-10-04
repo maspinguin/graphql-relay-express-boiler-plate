@@ -9,11 +9,12 @@ import {
 } from 'graphql-relay';
 
 import {
-    clientType
+    clientType,
+    client
 } from "../viewer/ClientType";
 
 import originalData from '../../mock/client';
-import {addData, findById} from '../../helper/lodashSearch';
+import {addData, findById, updateData } from '../../helper/lodashSearch';
 import {addNodeDefinition} from "../viewer/GraphQLNodeDef";
 import {pubsub} from "../schemaSubscription";
 
@@ -41,6 +42,33 @@ const addDataClientMutation = mutationWithClientMutationId({
     }
 });
 
+const updateDataClientMutation = mutationWithClientMutationId({
+    name: 'updateDataClientMutation',
+    inputFields: {
+        plainId: {
+            type: GraphQLNonNull(GraphQLString)
+        },
+        name: {
+            type: GraphQLNonNull(GraphQLString)
+        },
+        email: {
+            type: GraphQLNonNull(GraphQLString)
+        }
+    },
+    outputFields: {
+        viewer: {
+            type: clientType
+        }
+    },
+    mutateAndGetPayload: args => {
+        const data = updateData(originalData, { ...args });
+        pubsub.publish('clientUpdated', {viewer: data});
+        return {
+            viewer: data
+        };
+    }
+})
+
 addNodeDefinition(
     {
         Client: id => {
@@ -53,5 +81,6 @@ addNodeDefinition(
 );
 
 module.exports = {
-    addDataClientMutation
+    addDataClientMutation,
+    updateDataClientMutation
 };
