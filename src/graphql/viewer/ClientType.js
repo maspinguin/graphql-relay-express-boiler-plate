@@ -5,6 +5,7 @@ import {
 } from 'graphql-relay';
 
 import {
+    GraphQLNonNull,
     GraphQLObjectType,
     GraphQLString
 } from 'graphql';
@@ -39,6 +40,9 @@ let clientType = new GraphQLObjectType({
         },
         userId: {
             type: GraphQLString
+        },
+        status: {
+            type: GraphQLString
         }
     }
 });
@@ -65,6 +69,7 @@ let clients = {
         ...defaultConnectionArgs
     },
     resolve: async(_, args, context) => {
+        console.log('args test', args);
         // imagine it was all data
         let result  = mapData(originalData);
 
@@ -115,6 +120,8 @@ const toConnection = (pageResult, connectionArgs) => {
 
 
 export {
+    clientConnection,
+    toConnection,
     clientType,
     clients,
     client

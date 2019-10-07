@@ -5,7 +5,6 @@ const http = require('http');
 
 // const or variable
 const APP_PORT = process.env.PORT || 8080;
-const SOCKET_PORT = 8081;
 const graphqlServer = GraphQLServer.create();
 
 

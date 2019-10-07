@@ -21,6 +21,7 @@ const updateData = (originalData, payload = {}) => {
             if(item.plainId === payload.plainId) {
                 originalData[index].name = payload.name;
                 originalData[index].email = payload.email;
+                originalData[index].status = payload.status;
             }
         });
         return payload;

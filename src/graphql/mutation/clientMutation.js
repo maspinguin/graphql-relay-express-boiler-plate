@@ -10,7 +10,8 @@ import {
 
 import {
     clientType,
-    client
+    client,
+    clients
 } from "../viewer/ClientType";
 
 import originalData from '../../mock/client';
@@ -26,6 +27,9 @@ const addDataClientMutation = mutationWithClientMutationId({
         },
         email: {
             type: GraphQLNonNull(GraphQLString)
+        },
+        status: {
+            type: GraphQLNonNull(GraphQLString)
         }
     },
     outputFields: {
@@ -33,8 +37,9 @@ const addDataClientMutation = mutationWithClientMutationId({
             type: clientType
         }
     },
-    mutateAndGetPayload: args => {
+    mutateAndGetPayload: (args, context, info) => {
         const data = addData(originalData, { ...args });
+        // pubsub.publish('clientAdded');
         pubsub.publish('clientAdded');
         return {
             viewer: data
@@ -53,6 +58,9 @@ const updateDataClientMutation = mutationWithClientMutationId({
         },
         email: {
             type: GraphQLNonNull(GraphQLString)
+        },
+        status: {
+            type: GraphQLNonNull(GraphQLString)
         }
     },
     outputFields: {
@@ -62,10 +70,14 @@ const updateDataClientMutation = mutationWithClientMutationId({
     },
     mutateAndGetPayload: args => {
         const data = updateData(originalData, { ...args });
-        pubsub.publish('clientUpdated', {viewer: data});
-        return {
-            viewer: data
-        };
+        if(data) {
+            pubsub.publish(`clientUpdated:${args.plainId}`, {viewer: data});
+            return {
+                viewer: data
+            };
+        }
+        return null;
+
     }
 })
 
