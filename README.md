@@ -117,3 +117,27 @@ query variable:
   }
 }
 ```
+
+### Available Subscription ###
+** Client Updated **
+```
+subscription ClientUpdatedSubscription($input:clientUpdatedInput!) {
+  clientUpdated(input:$input){
+    viewer{
+      id
+      name
+      email
+      plainId
+      status
+    }
+  }
+}
+```
+query variable:
+```
+{
+  "input": {
+    "plainId": "2"
+  }
+}
+```
